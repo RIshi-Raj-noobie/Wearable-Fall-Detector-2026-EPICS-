@@ -1,0 +1,19 @@
+class SignalProcessing:
+
+    @staticmethod
+    def compute_svm(ax, ay, az):
+        return np.sqrt(ax**2 + ay**2 + az**2)
+
+    @staticmethod
+    def compute_gyro_magnitude(gx, gy, gz):
+        return np.sqrt(gx**2 + gy**2 + gz**2)
+
+    @staticmethod
+    def low_pass_filter(data, alpha=0.8):
+        filtered = []
+        prev = data[0]
+        for x in data:
+            val = alpha * prev + (1 - alpha) * x
+            filtered.append(val)
+            prev = val
+        return filtered
