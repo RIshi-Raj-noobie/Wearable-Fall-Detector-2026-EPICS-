@@ -1,0 +1,15 @@
+class CloudServer:
+
+    def __init__(self):
+        self.database = []
+
+    def receive_data(self, payload):
+        print("☁️ Cloud received:", payload)
+        self.database.append(payload)
+
+    def notify_users(self):
+        print("📲 Push notification sent to mobile app")
+
+    def process_event(self, payload):
+        self.receive_data(payload)
+        self.notify_users()
