@@ -30,4 +30,4 @@ This project implements a smart wearable fall detection system designed for elde
 - Real Hardware Deployment (ESP32)
 
 ## 👨‍💻 Author
-Your Name
+Rishiraj Singh Tomar
