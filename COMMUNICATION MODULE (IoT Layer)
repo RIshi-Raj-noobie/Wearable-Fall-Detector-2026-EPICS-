@@ -1,0 +1,21 @@
+import json
+
+class CommunicationModule:
+
+    def __init__(self):
+        self.device_id = "DEVICE_001"
+
+    def create_payload(self):
+        payload = {
+            "device_id": self.device_id,
+            "event": "FALL_DETECTED",
+            "timestamp": time.time()
+        }
+        return json.dumps(payload)
+
+    def send_to_cloud(self):
+        payload = self.create_payload()
+        print("📡 Sending to cloud:", payload)
+
+    def receive_ack(self):
+        print("✅ Acknowledgment received from server")
