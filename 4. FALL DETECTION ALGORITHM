@@ -1,0 +1,32 @@
+class FallDetection:
+
+    def __init__(self):
+        self.FALL_THRESHOLD = 3.0
+        self.GYRO_THRESHOLD = 100
+        self.IMMOBILITY_THRESHOLD = 0.05
+        self.window_size = 50  # ~1 sec buffer
+
+        self.svm_buffer = []
+
+    def update_buffer(self, svm):
+        self.svm_buffer.append(svm)
+        if len(self.svm_buffer) > self.window_size:
+            self.svm_buffer.pop(0)
+
+    def detect(self, svm, gyro_mag):
+        self.update_buffer(svm)
+
+        # Step 1: Impact Detection
+        if svm > self.FALL_THRESHOLD:
+
+            # Step 2: Rotation Check
+            if gyro_mag > self.GYRO_THRESHOLD:
+
+                # Step 3: Immobility Check
+                if len(self.svm_buffer) == self.window_size:
+                    variance = np.var(self.svm_buffer)
+
+                    if variance < self.IMMOBILITY_THRESHOLD:
+                        return True
+
+        return False
