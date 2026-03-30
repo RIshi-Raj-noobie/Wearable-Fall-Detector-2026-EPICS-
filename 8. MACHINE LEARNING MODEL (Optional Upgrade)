@@ -1,0 +1,15 @@
+class MLModel:
+
+    def __init__(self):
+        # Placeholder model
+        self.model = None
+
+    def extract_features(self, ax, ay, az):
+        svm = np.sqrt(ax**2 + ay**2 + az**2)
+        return [svm]
+
+    def predict(self, features):
+        # Dummy prediction logic
+        if features[0] > 3:
+            return 1  # Fall
+        return 0
