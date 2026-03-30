@@ -1,0 +1,33 @@
+class FallDetectionSystem:
+
+    def __init__(self):
+        self.sensor = SensorModule()
+        self.processor = SignalProcessing()
+        self.detector = FallDetection()
+        self.alert = AlertSystem()
+        self.comm = CommunicationModule()
+        self.cloud = CloudServer()
+
+    def run(self):
+
+        print("🚀 System Started...")
+
+        while True:
+            ax, ay, az, gx, gy, gz = self.sensor.get_sensor_data()
+
+            svm = self.processor.compute_svm(ax, ay, az)
+            gyro_mag = self.processor.compute_gyro_magnitude(gx, gy, gz)
+
+            fall = self.detector.detect(svm, gyro_mag)
+
+            if fall:
+                print("🚨 FALL DETECTED!")
+
+                self.alert.trigger_all()
+
+                payload = self.comm.create_payload()
+                self.cloud.process_event(payload)
+
+                break  # stop after detection for demo
+
+            time.sleep(0.02)
