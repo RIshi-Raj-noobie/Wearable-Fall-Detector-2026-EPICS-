@@ -1,0 +1,24 @@
+import numpy as np
+import time
+
+class SensorModule:
+    def __init__(self):
+        self.fs = 50  # sampling frequency
+
+    def read_accelerometer(self):
+        # Simulated values (replace with MPU6050 in real)
+        ax = np.random.normal(0, 0.2)
+        ay = np.random.normal(0, 0.2)
+        az = np.random.normal(1, 0.2)
+        return ax, ay, az
+
+    def read_gyroscope(self):
+        gx = np.random.normal(0, 5)
+        gy = np.random.normal(0, 5)
+        gz = np.random.normal(0, 5)
+        return gx, gy, gz
+
+    def get_sensor_data(self):
+        ax, ay, az = self.read_accelerometer()
+        gx, gy, gz = self.read_gyroscope()
+        return ax, ay, az, gx, gy, gz
