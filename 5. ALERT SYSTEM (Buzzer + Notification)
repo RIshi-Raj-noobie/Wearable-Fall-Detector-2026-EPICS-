@@ -1,0 +1,15 @@
+class AlertSystem:
+
+    def trigger_buzzer(self):
+        print("🔊 BUZZER ACTIVATED!")
+
+    def send_local_alert(self):
+        print("⚠️ Nearby alert triggered")
+
+    def send_notification(self):
+        print("📱 Sending notification to caregiver...")
+
+    def trigger_all(self):
+        self.trigger_buzzer()
+        self.send_local_alert()
+        self.send_notification()
