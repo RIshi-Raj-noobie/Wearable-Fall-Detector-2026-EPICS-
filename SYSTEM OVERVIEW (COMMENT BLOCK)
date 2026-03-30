@@ -1,0 +1,14 @@
+"""
+PROJECT: Wearable Fall Detection System
+
+ARCHITECTURE:
+1. Sensor Layer (Accelerometer + Gyroscope)
+2. Processing Layer (Feature Extraction + Detection)
+3. Communication Layer (WiFi + Cloud API)
+4. Alert Layer (Buzzer + Mobile Notification)
+5. Cloud Layer (Database + API)
+6. Mobile App (Caregiver Interface)
+
+NOTE:
+This is a theoretical integrated model for presentation purposes.
+"""
